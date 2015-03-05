@@ -9,6 +9,7 @@
 #import "FilhoTableViewController.h"
 #import "Filho.h"
 #import "FilhosSingleton.h"
+#import "FilhoTableViewCell.h"
 
 @interface FilhoTableViewController ()
 
@@ -18,23 +19,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    FilhosSingleton *fs = [[FilhosSingleton alloc] init];
-    
-    self.filhos = fs.filhos;
-    
+    [self.tableView setRowHeight:UITableViewAutomaticDimension];
+    [self.tableView setEstimatedRowHeight:144];
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    _labelPai.text = _pai;
+//_labelPai.text = _pai;
 }
--(void) viewDidAppear:(BOOL)animated    {
-    _labelPai.text = _pai;    
-}
+//-(void) viewDidAppear:(BOOL)animated
+//{
+//   // _labelPai.text = _pai;
+//    [self.tableView reloadData];
+//}
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -47,21 +48,28 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.filhos.count;
+
+    return [[[FilhosSingleton sharedInstance] filhos] count];
 }
 
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    Filho *f = [self.filhos objectAtIndex:[indexPath row]];
-        
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"celula"];
+  Filho *f = [[[FilhosSingleton sharedInstance] filhos] objectAtIndex:[indexPath row]];
     
+    
+        
+    //    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"celula"];
+    FilhoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"filhoCellIdentifier"];
+    
+    [cell.imageView setImage:f.foto];
     cell.textLabel.text = f.nome;
     
     return cell;
 }
 
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+{   return 144; }
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {

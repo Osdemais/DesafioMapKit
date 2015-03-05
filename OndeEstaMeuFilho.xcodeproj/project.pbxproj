@@ -20,6 +20,7 @@
 		A17939251AA5F1410003759F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = A17939231AA5F1410003759F /* LaunchScreen.xib */; };
 		A17939311AA5F1410003759F /* OndeEstaMeuFilhoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A17939301AA5F1410003759F /* OndeEstaMeuFilhoTests.m */; };
 		A179393C1AA5F7ED0003759F /* FilhoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A179393B1AA5F7ED0003759F /* FilhoTableViewController.m */; };
+		A1DE15AB1AA8747700F57B64 /* FilhoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A1DE15AA1AA8747700F57B64 /* FilhoTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,6 +60,8 @@
 		A17939301AA5F1410003759F /* OndeEstaMeuFilhoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OndeEstaMeuFilhoTests.m; sourceTree = "<group>"; };
 		A179393A1AA5F7ED0003759F /* FilhoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilhoTableViewController.h; sourceTree = "<group>"; };
 		A179393B1AA5F7ED0003759F /* FilhoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilhoTableViewController.m; sourceTree = "<group>"; };
+		A1DE15A91AA8747700F57B64 /* FilhoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilhoTableViewCell.h; sourceTree = "<group>"; };
+		A1DE15AA1AA8747700F57B64 /* FilhoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilhoTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +117,8 @@
 				A13E3D1B1AA64FE1001D10FC /* CadastrarFilhosViewController.m */,
 				A179393A1AA5F7ED0003759F /* FilhoTableViewController.h */,
 				A179393B1AA5F7ED0003759F /* FilhoTableViewController.m */,
+				A1DE15A91AA8747700F57B64 /* FilhoTableViewCell.h */,
+				A1DE15AA1AA8747700F57B64 /* FilhoTableViewCell.m */,
 				A13E3D171AA6465F001D10FC /* FilhosSingleton.h */,
 				A13E3D181AA6465F001D10FC /* FilhosSingleton.m */,
 				9E359CB01AA739AF0096987C /* MapaViewController.h */,
@@ -253,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A148DAAB1AA611DD005C5434 /* Filho.m in Sources */,
+				A1DE15AB1AA8747700F57B64 /* FilhoTableViewCell.m in Sources */,
 				A179391D1AA5F1410003759F /* ViewController.m in Sources */,
 				A13E3D1C1AA64FE1001D10FC /* CadastrarFilhosViewController.m in Sources */,
 				A13E3D191AA6465F001D10FC /* FilhosSingleton.m in Sources */,

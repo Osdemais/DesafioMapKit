@@ -11,11 +11,14 @@
 #import "Filho.h"
 #import "FilhosSingleton.h"
 
-@interface CadastrarFilhosViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate> 
+@interface CadastrarFilhosViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate,
+UITextFieldDelegate>
 
-@property (weak, nonatomic) IBOutlet UITextField *novoFilho;
+
+@property (weak, nonatomic) IBOutlet UITextField *novoFilhoTextField;
 @property (weak, nonatomic) IBOutlet UIImageView *imagemFilho;
 @property (weak, nonatomic) IBOutlet UIButton *escolherImagem;
+@property (weak, nonatomic) IBOutlet UIButton *confirmarButton;
 
 - (IBAction)confirmar:(id)sender;
 - (IBAction)imagem:(id)sender;

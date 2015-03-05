@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FilhoTableViewController : UIViewController
+@interface FilhoTableViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>
 
 @property NSString *pai;
 @property NSMutableArray *filhos;

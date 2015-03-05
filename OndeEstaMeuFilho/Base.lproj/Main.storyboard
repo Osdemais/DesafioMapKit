@@ -52,23 +52,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XZK-0F-gJE">
-                                <rect key="frame" x="78" y="101" width="462" height="491"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="wTh-ud-da4">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wTh-ud-da4" id="QHK-Mi-2EF">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="Ddz-Fn-3S8" id="gXC-XD-9K5"/>
-                                    <outlet property="delegate" destination="Ddz-Fn-3S8" id="JdH-7A-4Jb"/>
-                                </connections>
-                            </tableView>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ml3-3P-ITe">
+                            <navigationBar contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ml3-3P-ITe">
                                 <rect key="frame" x="0.0" y="2" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="Contatos" id="5nK-wJ-1ic">
@@ -80,33 +64,50 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="AhR-jb-bb2" kind="show" id="8hx-wa-9O1"/>
+                                                    <segue destination="AhR-jb-bb2" kind="showDetail" id="h1B-pd-XWu"/>
                                                 </connections>
                                             </button>
                                         </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lEd-Jv-lFC">
-                                <rect key="frame" x="16" y="550" width="39" height="30"/>
-                                <state key="normal" title="Mapa">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="XZK-0F-gJE">
+                                <rect key="frame" x="0.0" y="46" width="600" height="473"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="4UE-R8-iA8"/>
+                                    <constraint firstAttribute="height" constant="554" id="drm-jD-f5a"/>
+                                </constraints>
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="50" maxX="0.0" maxY="0.0"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="filhoCellIdentifier" rowHeight="144" id="wTh-ud-da4" customClass="FilhoTableViewCell">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wTh-ud-da4" id="QHK-Mi-2EF">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZyF-St-eLe">
+                                                    <rect key="frame" x="22" y="8" width="128" height="128"/>
+                                                </imageView>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="fotoImageView" destination="ZyF-St-eLe" id="haY-VD-4ZU"/>
+                                            <segue destination="UcS-tB-h1n" kind="showDetail" id="NCb-PC-nP2"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
-                                    <segue destination="UcS-tB-h1n" kind="show" id="5eM-FX-uJH"/>
+                                    <outlet property="dataSource" destination="Ddz-Fn-3S8" id="gXC-XD-9K5"/>
+                                    <outlet property="delegate" destination="Ddz-Fn-3S8" id="JdH-7A-4Jb"/>
                                 </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Nome Pai" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkC-gL-ASW">
-                                <rect key="frame" x="35" y="64" width="306" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="XZK-0F-gJE" firstAttribute="top" secondItem="Ml3-3P-ITe" secondAttribute="bottom" constant="50" id="raj-se-ndS"/>
+                        </constraints>
                     </view>
                     <connections>
-                        <outlet property="labelPai" destination="GkC-gL-ASW" id="UQU-2H-5NU"/>
                         <outlet property="tableView" destination="XZK-0F-gJE" id="Cpp-9f-elw"/>
                     </connections>
                 </viewController>
@@ -138,14 +139,9 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="confirmar:" destination="AhR-jb-bb2" eventType="touchUpInside" id="GqX-zi-4MU"/>
+                                    <action selector="confirmar:" destination="AhR-jb-bb2" eventType="touchUpInside" id="0iZ-6a-2gN"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2YM-3A-R5h">
-                                <rect key="frame" x="270" y="137" width="97" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Foto:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RpS-5v-lMa">
                                 <rect key="frame" x="153" y="204" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -164,14 +160,19 @@
                                     <action selector="imagem:" destination="AhR-jb-bb2" eventType="touchUpInside" id="bIW-9Z-xXd"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2YM-3A-R5h">
+                                <rect key="frame" x="270" y="137" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="confirmarButton" destination="G94-HU-kKb" id="h0w-ve-AXC"/>
                         <outlet property="escolherImagem" destination="wOx-5S-ix0" id="WDd-9g-glR"/>
                         <outlet property="imagemFilho" destination="Hbf-Pd-GqZ" id="4Dh-cC-5ZQ"/>
-                        <outlet property="novoFilho" destination="2YM-3A-R5h" id="JpJ-iw-Cc4"/>
-                        <segue destination="Ddz-Fn-3S8" kind="show" identifier="Voltar" id="0St-zY-ope"/>
+                        <outlet property="novoFilhoTextField" destination="2YM-3A-R5h" id="Axk-tn-3Eg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cmC-Pj-DTp" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -247,6 +248,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="WVo-dX-Jks"/>
+        <segue reference="fxc-Tm-xb9"/>
     </inferredMetricsTieBreakers>
 </document>

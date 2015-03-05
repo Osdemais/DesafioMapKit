@@ -7,17 +7,17 @@
 //
 
 #import "CadastrarFilhosViewController.h"
+#import "FilhoTableViewController.h"
 
-@interface CadastrarFilhosViewController ()
-
-@end
 
 @implementation CadastrarFilhosViewController
 
 - (void)viewDidLoad
-{  
+{
     [super viewDidLoad];
+    [_novoFilhoTextField setDelegate:self];
     // Do any additional setup after loading the view.
+    [_confirmarButton setEnabled:NO];
 }
 
 - (void)didReceiveMemoryWarning
@@ -27,26 +27,27 @@
 }
 
 /*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 - (IBAction)confirmar:(id)sender
 {
     Filho *novoFilho = [[Filho alloc] init];
-    novoFilho.nome = self.novoFilho.text;
+    novoFilho.nome = self.novoFilhoTextField.text;
+    novoFilho.foto = [_imagemFilho image];
     NSLog(@"%@", novoFilho.nome);
-    FilhosSingleton *fs = [[FilhosSingleton alloc] init];
+    FilhosSingleton *fs = [FilhosSingleton sharedInstance];
     [fs.filhos addObject:novoFilho];
-    
-    [self performSegueWithIdentifier:@"Voltar" sender:nil];
-
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //    [self performSegueWithIdentifier:@"Voltar" sender:self];
 }
+
 
 - (IBAction)imagem:(id)sender
 {
@@ -77,9 +78,34 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+//{
+////    celulaTableViewCell * seg = (celulaTableViewCell*)segue.destinationViewController;
+//    UIImage *foto = _imagemFilho.image;
+//    FilhosViewController *otherView = segue.destinationViewController;
+//    [otherView setNovaFoto:foto];
+//}
+
+- (void) touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
-//    celulaTableViewCell * seg = (celulaTableViewCell*)segue.destinationViewController;
+    [self.novoFilhoTextField resignFirstResponder];
+    //    [novoFilho resignFirstResponder]; //resignFirstResponder faz com que o teclado suma, faz perder o foco
+}
+
+#pragma mark - TextField Delegate
+//Fecha o textField quando aperta return
+-(BOOL)textFieldShouldReturn:(UITextField *)textField{
+    return [_novoFilhoTextField resignFirstResponder];
+}
+
+-(BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string{
+    
+    if ([string length] !=0)
+        [_confirmarButton setEnabled:YES];
+    else
+        [_confirmarButton setEnabled:NO];
+    
+    return YES;
 }
 
 
