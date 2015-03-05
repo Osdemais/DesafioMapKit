@@ -10,6 +10,7 @@
 #import <MobileCoreServices/MobileCoreServices.h>
 #import "Filho.h"
 #import "FilhosSingleton.h"
+#import <Parse/Parse.h>
 
 @interface CadastrarFilhosViewController : UIViewController <UIImagePickerControllerDelegate, UINavigationControllerDelegate,
 UITextFieldDelegate>
@@ -19,6 +20,7 @@ UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIImageView *imagemFilho;
 @property (weak, nonatomic) IBOutlet UIButton *escolherImagem;
 @property (weak, nonatomic) IBOutlet UIButton *confirmarButton;
+@property NSString *paiParse;
 
 - (IBAction)confirmar:(id)sender;
 - (IBAction)imagem:(id)sender;

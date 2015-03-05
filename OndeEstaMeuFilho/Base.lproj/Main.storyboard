@@ -92,7 +92,7 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="fotoImageView" destination="ZyF-St-eLe" id="haY-VD-4ZU"/>
-                                            <segue destination="UcS-tB-h1n" kind="showDetail" id="NCb-PC-nP2"/>
+                                            <segue destination="UcS-tB-h1n" kind="showDetail" identifier="seguefilho" id="NCb-PC-nP2"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -244,7 +244,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fN-YL-mFN" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1104" y="960"/>
+            <point key="canvasLocation" x="1132" y="976"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

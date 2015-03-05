@@ -13,7 +13,7 @@
 @property NSString *pai;
 @property NSMutableArray *filhos;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (weak, nonatomic) IBOutlet UILabel *labelPai;
+
 
 
 

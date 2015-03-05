@@ -10,6 +10,7 @@
 #import "Filho.h"
 #import "FilhosSingleton.h"
 #import "FilhoTableViewCell.h"
+#import "CadastrarFilhosViewController.h"
 
 @interface FilhoTableViewController ()
 
@@ -45,6 +46,14 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // Return the number of sections.
     return 1;
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    CadastrarFilhosViewController * segundaTela = (CadastrarFilhosViewController*)segue.destinationViewController;
+    
+    segundaTela.paiParse = _pai;
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

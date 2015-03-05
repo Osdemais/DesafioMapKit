@@ -15,6 +15,8 @@
 @property (strong, nonatomic) CLLocationManager* gerenciadorGPS;
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapa;
+@property NSString *paiParse;
+@property NSString *filhoParse;
 
 - (IBAction)mudarOpcaoMapa:(UISegmentedControl *)sender;
 - (IBAction)rastrearLocalizacao:(UIBarButtonItem *)sender;

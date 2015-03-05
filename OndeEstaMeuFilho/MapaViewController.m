@@ -21,8 +21,12 @@
     self.gerenciadorGPS.desiredAccuracy = kCLLocationAccuracyBest;
     
     // Tipo de dado que controla coordenadas
+    
+    //-(void)consultaBD (NSString*) nome
     CLLocationCoordinate2D coordenadasPai = CLLocationCoordinate2DMake(-23.5459346,-46.6647445);
     CLLocationCoordinate2D coordenadasFilho = CLLocationCoordinate2DMake(-23.5471434,-46.6502232);
+    
+    NSLog(@"Pai: %@", _paiParse);
     
     // Tipo de dado que controla o zoom
     MKCoordinateSpan zoom = MKCoordinateSpanMake(0.07, 0.07);
@@ -82,6 +86,22 @@
     }
 }
 
+
+// https://www.parse.com/docs/ios_guide#queries-strings/iOS
+//-(void)consultaBD (NSString*) nome
+//{
+//    String myID = "12345";
+//    ParseQuery query = new ParseQuery("Players");
+//    query.getInBackground(myID, new GetCallback() {
+//        @Override
+//        public void done(ParseObject object, ParseException e) {
+//            if (object != null) {
+//                // Get object
+//            } else {
+//                // Not found
+//            }
+//        }
+//}
 
 - (IBAction)rastrearLocalizacao:(UIBarButtonItem *)sender {
     
