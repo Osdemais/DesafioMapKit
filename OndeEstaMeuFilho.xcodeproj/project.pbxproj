@@ -25,6 +25,7 @@
 		9E2285AA1AA8A29000AF4645 /* ParseFacebookUtils.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2285A51AA8A29000AF4645 /* ParseFacebookUtils.framework */; };
 		9E2285AB1AA8A29000AF4645 /* ParseUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9E2285A61AA8A29000AF4645 /* ParseUI.framework */; };
 		9E359CB21AA739AF0096987C /* MapaViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9E359CB11AA739AF0096987C /* MapaViewController.m */; };
+		A11D9CCF1AA9EF85003D32D9 /* AcessoFilhoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A11D9CCE1AA9EF85003D32D9 /* AcessoFilhoViewController.m */; };
 		A13E3D191AA6465F001D10FC /* FilhosSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = A13E3D181AA6465F001D10FC /* FilhosSingleton.m */; };
 		A13E3D1C1AA64FE1001D10FC /* CadastrarFilhosViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A13E3D1B1AA64FE1001D10FC /* CadastrarFilhosViewController.m */; };
 		A148DAAB1AA611DD005C5434 /* Filho.m in Sources */ = {isa = PBXBuildFile; fileRef = A148DAAA1AA611DD005C5434 /* Filho.m */; };
@@ -69,6 +70,8 @@
 		9E2285A61AA8A29000AF4645 /* ParseUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ParseUI.framework; sourceTree = "<group>"; };
 		9E359CB01AA739AF0096987C /* MapaViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapaViewController.h; sourceTree = "<group>"; };
 		9E359CB11AA739AF0096987C /* MapaViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapaViewController.m; sourceTree = "<group>"; };
+		A11D9CCD1AA9EF85003D32D9 /* AcessoFilhoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AcessoFilhoViewController.h; sourceTree = "<group>"; };
+		A11D9CCE1AA9EF85003D32D9 /* AcessoFilhoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AcessoFilhoViewController.m; sourceTree = "<group>"; };
 		A13E3D171AA6465F001D10FC /* FilhosSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilhosSingleton.h; sourceTree = "<group>"; };
 		A13E3D181AA6465F001D10FC /* FilhosSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilhosSingleton.m; sourceTree = "<group>"; };
 		A13E3D1A1AA64FE1001D10FC /* CadastrarFilhosViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CadastrarFilhosViewController.h; sourceTree = "<group>"; };
@@ -191,6 +194,8 @@
 				A17939191AA5F1410003759F /* AppDelegate.m */,
 				A179391B1AA5F1410003759F /* ViewController.h */,
 				A179391C1AA5F1410003759F /* ViewController.m */,
+				A11D9CCD1AA9EF85003D32D9 /* AcessoFilhoViewController.h */,
+				A11D9CCE1AA9EF85003D32D9 /* AcessoFilhoViewController.m */,
 				A148DAA91AA611DD005C5434 /* Filho.h */,
 				A148DAAA1AA611DD005C5434 /* Filho.m */,
 				A13E3D1A1AA64FE1001D10FC /* CadastrarFilhosViewController.h */,
@@ -344,6 +349,7 @@
 				A13E3D191AA6465F001D10FC /* FilhosSingleton.m in Sources */,
 				A179391A1AA5F1410003759F /* AppDelegate.m in Sources */,
 				9E359CB21AA739AF0096987C /* MapaViewController.m in Sources */,
+				A11D9CCF1AA9EF85003D32D9 /* AcessoFilhoViewController.m in Sources */,
 				A179393C1AA5F7ED0003759F /* FilhoTableViewController.m in Sources */,
 				A17939171AA5F1410003759F /* main.m in Sources */,
 			);

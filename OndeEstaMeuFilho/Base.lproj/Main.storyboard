@@ -17,28 +17,67 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Esd-I9-T4u">
-                                <rect key="frame" x="43" y="82" width="38" height="30"/>
-                                <state key="normal" title="Login">
+                                <rect key="frame" x="68" y="260" width="143" height="30"/>
+                                <state key="normal" title="Acesso Pai">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="cadastrarPai:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RPS-eg-paJ"/>
                                     <segue destination="Ddz-Fn-3S8" kind="show" identifier="segueNome" id="WVo-dX-Jks"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CRO-Ty-R5I" customClass="FBLoginView">
-                                <rect key="frame" x="16" y="155" width="250" height="50"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="99" y="157" width="250" height="50"/>
+                                <color key="backgroundColor" red="0.098039217293262482" green="0.098039217293262482" blue="0.098039217293262482" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="lPL-x0-cUQ"/>
                                 </connections>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ejz-2q-8pP">
+                                <rect key="frame" x="283" y="260" width="108" height="30"/>
+                                <state key="normal" title="Acesso Filho">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="cadastrarFilho:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OaR-Wn-YrM"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <segue destination="6dB-9r-Yxw" kind="show" identifier="telaFilho" id="YeB-mD-Jle"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="396" y="226"/>
+        </scene>
+        <!--Acesso Filho View Controller-->
+        <scene sceneID="8RE-er-Nsm">
+            <objects>
+                <viewController id="6dB-9r-Yxw" customClass="AcessoFilhoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gKi-4z-dKg"/>
+                        <viewControllerLayoutGuide type="bottom" id="Poq-Jh-SzJ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c1C-cx-Q8u">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" text="AGORA SEUS PAIS SABEM ONDE VOCÊ ESTA!!!!!!!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="jFY-bZ-I13">
+                                <rect key="frame" x="70" y="110" width="476" height="329"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="59"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="k9R-nz-3yV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="387" y="1008"/>
         </scene>
         <!--Filho Table View Controller-->
         <scene sceneID="5Eg-xZ-0JN">
@@ -113,7 +152,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PPy-u9-8ZP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1104" y="240"/>
+            <point key="canvasLocation" x="1222" y="191"/>
         </scene>
         <!--Cadastrar Filhos View Controller-->
         <scene sceneID="7lB-19-TwP">
@@ -248,6 +287,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="fxc-Tm-xb9"/>
+        <segue reference="WVo-dX-Jks"/>
     </inferredMetricsTieBreakers>
 </document>

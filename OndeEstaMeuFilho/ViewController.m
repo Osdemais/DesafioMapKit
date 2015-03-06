@@ -28,10 +28,16 @@
 }
 
 -(void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-     FilhoTableViewController * segundaTela = (FilhoTableViewController*)segue.destinationViewController;
     
-    segundaTela.pai = self.nome;
-    //segundaTela. = self.nome;
+    
+    
+    
+    if ([[segue.destinationViewController class] isEqual: [FilhoTableViewController class]]){
+        FilhoTableViewController * segundaTela = (FilhoTableViewController*)segue.destinationViewController;
+        segundaTela.pai = self.nome;
+    }
+
+    
     
 }
 
@@ -78,4 +84,82 @@
     }
 }
 
+- (IBAction)cadastrarPai:(UIButton *)sender {
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Pai"];
+    [query whereKey:@"Coluna_Pai" equalTo:_nome];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+if (!error) {
+    if (objects.count >0){
+        // The find succeeded.
+        NSLog(@"Successfully retrieved %d scores.", objects.count);
+        // Do something with the found objects
+        for (PFObject *object in objects) {
+            //    NSString* nome = [query ]
+            NSLog(@"NA tabela: %@", object [@"Coluna_Pai"]);
+        }
+    }else{
+        PFObject *testObject = [PFObject objectWithClassName:@"Pai"];
+        testObject[@"Coluna_Pai"] = (@"%@", _nome);
+        [testObject saveInBackground];
+        
+            NSLog(@"Gravado: %@", _nome);
+        
+    }
+    
+    
+
+} else {
+// Log details of the failure
+NSLog(@"Error: %@ %@", error, [error userInfo]);
+    
+    
+    
+    
+}
+    }];
+    
+    
+    
+   
+    
+}
+
+- (IBAction)cadastrarFilho:(UIButton *)sender {
+    
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Filho"];
+    [query whereKey:@"Coluna_Filho" equalTo:_nome];
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        if (!error) {
+            if (objects.count >0){
+                // The find succeeded.
+                [self performSegueWithIdentifier:@"telaFilho" sender:self];
+                
+
+                
+                NSLog(@"Successfully retrieved %d scores.", objects.count);
+                // Do something with the found objects
+                for (PFObject *object in objects) {
+                    //    NSString* nome = [query ]
+                    NSLog(@"NA tabela: %@", object [@"Coluna_Filho"]);
+                }
+            }else{
+                NSLog(@"Seu pai nao cadastrou você");
+            }
+            
+            
+            
+        } else {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            
+            
+            
+            
+        }
+    }];
+    
+    
+}
 @end

@@ -45,10 +45,9 @@
     FilhosSingleton *fs = [FilhosSingleton sharedInstance];
     [fs.filhos addObject:novoFilho];
 
-    PFObject *testObject = [PFObject objectWithClassName:@"Tabela_OndeEstaMinhaFamilia"];
+    PFObject *testObject = [PFObject objectWithClassName:@"Filho"];
     testObject[@"Coluna_FilhoGPS"] = @"00000,00000";
     testObject[@"Coluna_Filho"] = (@"%@",novoFilho.nome);
-    testObject[@"Coluna_PaiGPS"] = @"00000,00000";
     testObject[@"Coluna_Pai"] = (@"%@",_paiParse);
     [testObject saveInBackground];
     
