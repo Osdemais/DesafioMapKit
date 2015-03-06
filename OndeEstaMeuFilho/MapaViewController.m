@@ -15,6 +15,8 @@
 
     [super viewDidLoad];
     
+    NSLog(_filhoParse);
+    
     self.gerenciadorGPS = [[CLLocationManager alloc] init];
     
     // Propriedade que define a intensidade de atualizações

@@ -11,12 +11,18 @@
 #import "FilhosSingleton.h"
 #import "FilhoTableViewCell.h"
 #import "CadastrarFilhosViewController.h"
+#import "MapaViewController.h"
+
 
 @interface FilhoTableViewController ()
 
+@property (nonatomic)NSInteger rowSelected;
+
 @end
 
+
 @implementation FilhoTableViewController
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -48,11 +54,25 @@
     return 1;
 }
 
+-(NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    _rowSelected = indexPath.row;
+    return indexPath;
+}
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    CadastrarFilhosViewController * segundaTela = (CadastrarFilhosViewController*)segue.destinationViewController;
     
-    segundaTela.paiParse = _pai;
+    if ([[segue.destinationViewController class] isEqual: [CadastrarFilhosViewController class]] ){
+    CadastrarFilhosViewController * segundaTela = (CadastrarFilhosViewController*)segue.destinationViewController;
+        segundaTela.paiParse = _pai;
+    }else{
+        MapaViewController *terceiraTela = (MapaViewController*) segue.destinationViewController;
+        terceiraTela.filhoParse = [[[[FilhosSingleton sharedInstance] filhos]objectAtIndex: _rowSelected] nome];
+        terceiraTela.paiParse = _pai;
+        
+    }
+    
+ 
 
 }
 
