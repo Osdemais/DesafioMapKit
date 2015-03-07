@@ -34,6 +34,8 @@ static bool isFirstAccess = YES;
     return [self sharedInstance];
 }
 
+
+
 + (id)copyWithZone:(struct _NSZone *)zone
 {
     return [self sharedInstance];

@@ -44,12 +44,48 @@
     NSLog(@"%@", novoFilho.nome);
     FilhosSingleton *fs = [FilhosSingleton sharedInstance];
     [fs.filhos addObject:novoFilho];
+    
+    
+    
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Filho"];
+    [query whereKey:@"Coluna_Filho" equalTo:novoFilho.nome];
+    ///Retrieve the object by id
+    [query findObjects];
+    
+    
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if (!error) {
+            
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d scores.", objects.count);
+            
+            PFObject *testObject = [PFObject objectWithClassName:@"Filho"];
+            testObject[@"Coluna_FilhoLatitude"] = @"00000";
+            testObject[@"Coluna_FilhoLongitude"] = @"00000";
+            testObject[@"Coluna_Filho"] = (@"%@",novoFilho.nome);
+            testObject[@"Coluna_Pai"] = (@"%@",_paiParse);
+            [testObject saveInBackground];
+            
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                //    NSString* nome = [query ]
+                NSLog(@"NA tabela: %@", object [@"Coluna_Pai"]);
+                
+                
+                
+            }
+            
+        }else{
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            
+        }
+    }];
+    
 
-    PFObject *testObject = [PFObject objectWithClassName:@"Filho"];
-    testObject[@"Coluna_FilhoGPS"] = @"00000,00000";
-    testObject[@"Coluna_Filho"] = (@"%@",novoFilho.nome);
-    testObject[@"Coluna_Pai"] = (@"%@",_paiParse);
-    [testObject saveInBackground];
+    
     
     
     

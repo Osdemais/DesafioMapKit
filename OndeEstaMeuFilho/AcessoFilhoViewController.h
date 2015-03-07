@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import <Parse/Parse.h>
 
-@interface AcessoFilhoViewController : UIViewController
+@interface AcessoFilhoViewController : UIViewController <CLLocationManagerDelegate>
+
+@property NSString* nome;
+- (IBAction)getCurrentLocation:(id)sender;
+
 
 @end

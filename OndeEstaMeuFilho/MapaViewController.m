@@ -15,49 +15,121 @@
 
     [super viewDidLoad];
     
-    NSLog(_filhoParse);
     
-    self.gerenciadorGPS = [[CLLocationManager alloc] init];
     
-    // Propriedade que define a intensidade de atualizações
-    self.gerenciadorGPS.desiredAccuracy = kCLLocationAccuracyBest;
     
-    // Tipo de dado que controla coordenadas
+    PFQuery *query = [PFQuery queryWithClassName:@"Filho"];
+    [query whereKey:@"Coluna_Filho" equalTo: _filhoParse];// Rafael Cavalcante Adicionado para testes
+    ///Retrieve the object by id
     
-    //-(void)consultaBD (NSString*) nome
-    CLLocationCoordinate2D coordenadasPai = CLLocationCoordinate2DMake(-23.5459346,-46.6647445);
-    CLLocationCoordinate2D coordenadasFilho = CLLocationCoordinate2DMake(-23.5471434,-46.6502232);
-    
-    NSLog(@"Pai: %@", _paiParse);
-    
-    // Tipo de dado que controla o zoom
-    MKCoordinateSpan zoom = MKCoordinateSpanMake(0.07, 0.07);
-    
-    // Criar a região que será exibida no mapa
-    // Uma região é criada a partir de uma coordenada e do zoom
-    //MKCoordinateRegion regiao = MKCoordinateRegionMake(coordenadasPai, zoom);
-    MKCoordinateRegion regiao = MKCoordinateRegionMake(coordenadasFilho, zoom);
-    
-    // Método que altera uma região exibida no mapa
-    [self.mapa setRegion:regiao];
-    
-    // Tipo de dado que controla um pino no mapa
-    MKPointAnnotation* pinoPai = [[MKPointAnnotation alloc] init];
-    MKPointAnnotation* pinoFilho= [[MKPointAnnotation alloc] init];
-    
-    // Propriedade que controla o título do pino
-    pinoPai.title = @"GPS do Pai";
-    pinoFilho.title = @"GPS do Filho";
-    
-    // Propriedade que define as coordenadas de um pino
-    pinoPai.coordinate = coordenadasPai;
-    pinoFilho.coordinate = coordenadasFilho;
-    
-    // Método que adiciona o pino no mapa
-    [self.mapa addAnnotation:pinoPai];
-    [self.mapa addAnnotation:pinoFilho];
-}
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if (!error) {
+            
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d scores.", objects.count);
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                //    NSString* nome = [query ]
+                NSLog(@"NA tabela: %@", object [@"Coluna_Filho"]);
+                //object[@"Coluna_FilhoLatitude"] = latitude;
+                //object[@"Coluna_FilhoLongitude"] = longitude;
+                // NSString *CO = object [@"Coluna_FilhoLongitude"];
+                
+                
+                NSLog(object [@"Coluna_FilhoLatitude"]);
+                //NSLog(object[@"Coluna_FilhoLongitude"]);
+                NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+                f.numberStyle = NSNumberFormatterDecimalStyle;
+                NSNumber *latitudex = [f numberFromString: object [@"Coluna_FilhoLatitude"]];
+                NSNumber *longitudex = [f numberFromString: object [@"Coluna_FilhoLongitude"]];
+                _latitude = [latitudex doubleValue];
+                _longitude = [longitudex doubleValue];
+                
+                CLLocationCoordinate2D coordenadasFilho = CLLocationCoordinate2DMake(_latitude ,_longitude);
+                MKCoordinateSpan zoom = MKCoordinateSpanMake(0.07, 0.07);
+                MKCoordinateRegion regiao = MKCoordinateRegionMake(coordenadasFilho, zoom);
+                [self.mapa setRegion:regiao];
+               
+                MKPointAnnotation* pinoFilho= [[MKPointAnnotation alloc] init];
+                
+                pinoFilho.coordinate = coordenadasFilho;
 
+                [self.mapa addAnnotation:pinoFilho];
+                
+                
+               
+                
+                // Método que altera uma região exibida no mapa
+              
+                
+                
+            }
+            
+        }else{
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            
+        }
+    }];
+    
+    
+    
+    
+    
+    
+//    
+//    NSLog(_filhoParse);
+// 
+//    self.gerenciadorGPS = [[CLLocationManager alloc] init];
+//    self.gerenciadorGPS.delegate = self;
+//    // Propriedade que define a intensidade de atualizações
+//    self.gerenciadorGPS.desiredAccuracy = kCLLocationAccuracyBest;
+//    
+//    // Tipo de dado que controla coordenadas
+//    
+//    //-(void)consultaBD (NSString*) nome
+//    CLLocationCoordinate2D coordenadasPai = CLLocationCoordinate2DMake(-23.5471434,-46.6402232);
+//    [self.gerenciadorGPS startUpdatingLocation];
+//    CLLocationCoordinate2D coordenadasFilho = CLLocationCoordinate2DMake(-23.5471434,-46.6502232);
+//    
+//    NSLog(@"Pai: %@", _paiParse);
+//    
+//    // Tipo de dado que controla o zoom
+//    MKCoordinateSpan zoom = MKCoordinateSpanMake(0.07, 0.07);
+//    
+//    // Criar a região que será exibida no mapa
+//    // Uma região é criada a partir de uma coordenada e do zoom
+//    //MKCoordinateRegion regiao = MKCoordinateRegionMake(coordenadasPai, zoom);
+//    MKCoordinateRegion regiao = MKCoordinateRegionMake(coordenadasFilho, zoom);
+//    
+//    // Método que altera uma região exibida no mapa
+//    [self.mapa setRegion:regiao];
+//    
+//    // Tipo de dado que controla um pino no mapa
+//    MKPointAnnotation* pinoPai = [[MKPointAnnotation alloc] init];
+//    MKPointAnnotation* pinoFilho= [[MKPointAnnotation alloc] init];
+//    
+//    // Propriedade que controla o título do pino
+//    pinoPai.title = @"GPS do Pai";
+//    pinoFilho.title = @"GPS do Filho";
+//    
+//    // Propriedade que define as coordenadas de um pino
+//    pinoPai.coordinate = coordenadasPai;
+//    pinoFilho.coordinate = coordenadasFilho;
+//    
+//    
+//    
+    
+    
+    
+    
+    
+//    // Método que adiciona o pino no mapa
+//    //[self.mapa addAnnotation:pinoPai];
+}
+//-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
+//    [self.gerenciadorGPS stopUpdatingLocation];
+//}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -107,6 +179,58 @@
 
 - (IBAction)rastrearLocalizacao:(UIBarButtonItem *)sender {
     
+    
+    PFQuery *query = [PFQuery queryWithClassName:@"Filho"];
+    [query whereKey:@"Coluna_Filho" equalTo: _filhoParse];// Rafael Cavalcante Adicionado para testes
+    ///Retrieve the object by id
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if (!error) {
+            
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d scores.", objects.count);
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                //    NSString* nome = [query ]
+                NSLog(@"NA tabela: %@", object [@"Coluna_Filho"]);
+                //object[@"Coluna_FilhoLatitude"] = latitude;
+                //object[@"Coluna_FilhoLongitude"] = longitude;
+               // NSString *CO = object [@"Coluna_FilhoLongitude"];
+                
+
+                NSLog(object [@"Coluna_FilhoLatitude"]);
+                //NSLog(object[@"Coluna_FilhoLongitude"]);
+                NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
+                f.numberStyle = NSNumberFormatterDecimalStyle;
+                
+            
+                
+                
+                
+            }
+            
+        }else{
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            
+        }
+    }];
+    
+    CLLocationCoordinate2D coordenadasFilho = CLLocationCoordinate2DMake(_latitude ,_longitude);
+    MKCoordinateSpan zoom = MKCoordinateSpanMake(0.07, 0.01);
+    
+    MKPointAnnotation* pinoFilho= [[MKPointAnnotation alloc] init];
+    pinoFilho.coordinate = coordenadasFilho;
+    [self.mapa addAnnotation:pinoFilho];
+    
+    
+    MKCoordinateRegion regiao = MKCoordinateRegionMake(coordenadasFilho, zoom);
+    
+    // Método que altera uma região exibida no mapa
+    [self.mapa setRegion:regiao];
+    
+    
+    
     // Propriedade que liga o rastreamento do usuário no mapa
     self.mapa.showsUserLocation = YES;
     
@@ -117,17 +241,26 @@
     [self.gerenciadorGPS startUpdatingLocation];
 }
 
+- (IBAction)getCurrentLocation:(id)sender {
+    self.gerenciadorGPS.delegate = self;
+    self.gerenciadorGPS.desiredAccuracy = kCLLocationAccuracyBest;
+
+    [self.gerenciadorGPS startUpdatingLocation];
+}
+
 #pragma mark - CLLocationManagerDelegate
 // Método disparado quando a localização é atualizada
 -(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
 {
-    CLLocation* novaLocalizacao = [locations lastObject];
-    
-    MKCoordinateSpan zoom = MKCoordinateSpanMake(0.01, 0.01);
-    
-    MKCoordinateRegion regiao = MKCoordinateRegionMake(novaLocalizacao.coordinate, zoom);
-    
-    [self.mapa setRegion:regiao animated:YES];
+//    CLLocation* novaLocalizacao = [locations lastObject];
+//    
+//    MKCoordinateSpan zoom = MKCoordinateSpanMake(0.01, 0.01);
+//    
+//    MKCoordinateRegion regiao = MKCoordinateRegionMake(novaLocalizacao.coordinate, zoom);
+//    
+//    
+//    
+    //[self.mapa setRegion:regiao animated:YES];
 }
 
 /*

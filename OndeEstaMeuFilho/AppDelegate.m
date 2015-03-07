@@ -9,23 +9,25 @@
 #import "AppDelegate.h"
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
+#import "MapaViewController.h"
 
 @interface AppDelegate ()
 
 @end
 
 @implementation AppDelegate
-
+@synthesize locationManager = _locationManager;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     [FBLoginView class];
-    
+    self.locationManager = [[CLLocationManager alloc] init];
+    [self.locationManager requestAlwaysAuthorization];
     [Parse enableLocalDatastore];
     
     // Initialize Parse.
     [Parse setApplicationId:@"d1cXP1YOOgVNivmtNpYZLmbouPZeHqPDYu2qkdzt"
-                       clientKey:@"Qh4NICDo2PpwIrMUx15GEpjqKFOSCb7uzMOettTO"];
+clientKey:@"Qh4NICDo2PpwIrMUx15GEpjqKFOSCb7uzMOettTO"];
     
     // [Optional] Track statistics around application opens.
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];

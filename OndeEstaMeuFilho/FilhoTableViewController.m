@@ -28,6 +28,9 @@
     [super viewDidLoad];
     [self.tableView setRowHeight:UITableViewAutomaticDimension];
     [self.tableView setEstimatedRowHeight:144];
+    
+    
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
@@ -67,7 +70,7 @@
         segundaTela.paiParse = _pai;
     }else{
         MapaViewController *terceiraTela = (MapaViewController*) segue.destinationViewController;
-        terceiraTela.filhoParse = [[[[FilhosSingleton sharedInstance] filhos]objectAtIndex: _rowSelected] nome];
+        terceiraTela.filhoParse = [[[FilhosSingleton sharedInstance] filhos]objectAtIndex: _rowSelected];
         terceiraTela.paiParse = _pai;
         
     }
@@ -84,15 +87,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-  Filho *f = [[[FilhosSingleton sharedInstance] filhos] objectAtIndex:[indexPath row]];
+  NSString *f = [[[FilhosSingleton sharedInstance] filhos] objectAtIndex:[indexPath row]];
+    
     
     
         
     //    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"celula"];
     FilhoTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"filhoCellIdentifier"];
     
-    [cell.imageView setImage:f.foto];
-    cell.textLabel.text = f.nome;
+    cell.textLabel.text = f;
     
     return cell;
 }

@@ -8,6 +8,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
+#import <Parse/Parse.h>
 
 @interface MapaViewController : UIViewController <CLLocationManagerDelegate>
 
@@ -18,7 +19,11 @@
 @property NSString *paiParse;
 @property NSString *filhoParse;
 
+@property double latitude;
+@property double longitude;
+
 - (IBAction)mudarOpcaoMapa:(UISegmentedControl *)sender;
 - (IBAction)rastrearLocalizacao:(UIBarButtonItem *)sender;
+- (IBAction)getCurrentLocation:(id)sender;
 
 @end
