@@ -37,13 +37,12 @@
                 
                 
                 NSLog(object [@"Coluna_FilhoLatitude"]);
+                NSLog(object [@"Coluna_FilhoLongitude"]);
                 //NSLog(object[@"Coluna_FilhoLongitude"]);
-                NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-                f.numberStyle = NSNumberFormatterDecimalStyle;
-                NSNumber *latitudex = [f numberFromString: object [@"Coluna_FilhoLatitude"]];
-                NSNumber *longitudex = [f numberFromString: object [@"Coluna_FilhoLongitude"]];
-                _latitude = [latitudex doubleValue];
-                _longitude = [longitudex doubleValue];
+                NSString* y = object [@"Coluna_FilhoLongitude"];
+                NSString* x = object [@"Coluna_FilhoLatitude"];
+                _latitude = [x doubleValue];
+                _longitude = [y doubleValue];
                 
                 CLLocationCoordinate2D coordenadasFilho = CLLocationCoordinate2DMake(_latitude ,_longitude);
                 MKCoordinateSpan zoom = MKCoordinateSpanMake(0.07, 0.07);
@@ -200,10 +199,11 @@
 
                 NSLog(object [@"Coluna_FilhoLatitude"]);
                 //NSLog(object[@"Coluna_FilhoLongitude"]);
-                NSNumberFormatter *f = [[NSNumberFormatter alloc] init];
-                f.numberStyle = NSNumberFormatterDecimalStyle;
                 
-            
+                NSString* y = object [@"Coluna_FilhoLongitude"];
+                NSString* x = object [@"Coluna_FilhoLatitude"];
+                _latitude = [x doubleValue];
+                _longitude = [y doubleValue];
                 
                 
                 
@@ -215,6 +215,8 @@
             
         }
     }];
+    
+   
     
     CLLocationCoordinate2D coordenadasFilho = CLLocationCoordinate2DMake(_latitude ,_longitude);
     MKCoordinateSpan zoom = MKCoordinateSpanMake(0.07, 0.01);
@@ -230,28 +232,22 @@
     [self.mapa setRegion:regiao];
     
     
-    
-    // Propriedade que liga o rastreamento do usuário no mapa
-    self.mapa.showsUserLocation = YES;
-    
-    // Ligamos o delegate do gerenciado do GPS
-    self.gerenciadorGPS.delegate = self;
-    
-    // Método que liga o resgate  de valores de posição do device
-    [self.gerenciadorGPS startUpdatingLocation];
+//    
+//    // Propriedade que liga o rastreamento do usuário no mapa
+//    self.mapa.showsUserLocation = YES;
+//    
+//    // Ligamos o delegate do gerenciado do GPS
+//    self.gerenciadorGPS.delegate = self;
+//    
+//    // Método que liga o resgate  de valores de posição do device
+//    [self.gerenciadorGPS startUpdatingLocation];
 }
 
-- (IBAction)getCurrentLocation:(id)sender {
-    self.gerenciadorGPS.delegate = self;
-    self.gerenciadorGPS.desiredAccuracy = kCLLocationAccuracyBest;
-
-    [self.gerenciadorGPS startUpdatingLocation];
-}
 
 #pragma mark - CLLocationManagerDelegate
 // Método disparado quando a localização é atualizada
--(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
-{
+//-(void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+//{
 //    CLLocation* novaLocalizacao = [locations lastObject];
 //    
 //    MKCoordinateSpan zoom = MKCoordinateSpanMake(0.01, 0.01);
@@ -261,7 +257,7 @@
 //    
 //    
     //[self.mapa setRegion:regiao animated:YES];
-}
+//}
 
 /*
 #pragma mark - Navigation
