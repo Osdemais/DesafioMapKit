@@ -23,32 +23,7 @@
     [super viewDidLoad];
     
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Filho"];
-    ///Retrieve the object by id
     
-    
-    
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
-        if (!error) {
-            
-            // The find succeeded.
-            NSLog(@"Successfully retrieved %d scores.", objects.count);
-            // Do something with the found objects
-            for (PFObject *object in objects) {
-                //    NSString* nome = [query ]
-                NSLog(@"NA tabela: %@", object [@"Coluna_Pai"]);
-                NSString* nome = object[@"Coluna_Filho"];
-                
-                [[[FilhosSingleton sharedInstance]filhos] addObject: nome];
-                
-            }
-            
-        }else{
-            // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
-            
-        }
-    }];
     // Do any additional setup after loading the view, typically from a nib.
 }
 
@@ -74,6 +49,7 @@
 
     
     
+    
 }
 
 -(void) loginViewFetchedUserInfo:(FBLoginView *)loginView user:(id<FBGraphUser>)user{
@@ -81,6 +57,33 @@
     _nome = user.name;
     
     NSLog(@"%@", user.name);
+    PFQuery *query = [PFQuery queryWithClassName:@"Filho"];
+    ///Retrieve the object by id
+    [query whereKey:@"Coluna_Pai" equalTo:self.nome];
+    
+    
+    
+    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
+        if (!error) {
+            
+            // The find succeeded.
+            NSLog(@"Successfully retrieved %d scores.", objects.count);
+            // Do something with the found objects
+            for (PFObject *object in objects) {
+                //    NSString* nome = [query ]
+                NSLog(@"NA tabela: %@", object [@"Coluna_Pai"]);
+                NSString* nome = object[@"Coluna_Filho"];
+                
+                [[[FilhosSingleton sharedInstance]filhos] addObject: nome];
+                
+            }
+            
+        }else{
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            
+        }
+    }];
     
 }
 
