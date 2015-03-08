@@ -92,34 +92,34 @@
     //    [self performSegueWithIdentifier:@"Voltar" sender:self];
 }
 
-- (IBAction)imagem:(id)sender
-{
-    if ([UIImagePickerController isSourceTypeAvailable:(UIImagePickerControllerSourceTypeSavedPhotosAlbum)])
-    {
-        UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
-        imagePicker.delegate = self;
-        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-        imagePicker.mediaTypes = [NSArray arrayWithObjects:(NSString *) kUTTypeImage, nil];
-        imagePicker.allowsEditing = NO;
-        [self presentViewController:imagePicker animated:YES completion:nil];
-    }
-}
-
--(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
-{
-    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
-    [self dismissViewControllerAnimated:YES completion:nil];
-    if ([mediaType isEqualToString:(NSString *)kUTTypeImage])
-    {
-        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-        _imagemFilho.image = image;
-    }
-}
-
--(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+//- (IBAction)imagem:(id)sender
+//{
+//    if ([UIImagePickerController isSourceTypeAvailable:(UIImagePickerControllerSourceTypeSavedPhotosAlbum)])
+//    {
+//        UIImagePickerController *imagePicker = [[UIImagePickerController alloc]init];
+//        imagePicker.delegate = self;
+//        imagePicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+//        imagePicker.mediaTypes = [NSArray arrayWithObjects:(NSString *) kUTTypeImage, nil];
+//        imagePicker.allowsEditing = NO;
+//        [self presentViewController:imagePicker animated:YES completion:nil];
+//    }
+//}
+//
+//-(void) imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+//{
+//    NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//    if ([mediaType isEqualToString:(NSString *)kUTTypeImage])
+//    {
+//        UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+//        _imagemFilho.image = image;
+//    }
+//}
+//
+//-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+//{
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//}
 
 //- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 //{
