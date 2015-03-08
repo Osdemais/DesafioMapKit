@@ -12,7 +12,7 @@
 #import "FilhosSingleton.h"
 
 @interface ViewController ()
-
+@property NSString* flag;
 @end
 
 @implementation ViewController
@@ -21,6 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.flag = @"x";
     
     
     
@@ -65,7 +66,8 @@
     
     [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error){
         if (!error) {
-            
+            if ([self.flag  isEqual: @"x"]){
+            self.flag = @"";
             // The find succeeded.
             NSLog(@"Successfully retrieved %d scores.", objects.count);
             // Do something with the found objects
@@ -75,7 +77,7 @@
                 NSString* nome = object[@"Coluna_Filho"];
                 
                 [[[FilhosSingleton sharedInstance]filhos] addObject: nome];
-                
+            }
             }
             
         }else{
