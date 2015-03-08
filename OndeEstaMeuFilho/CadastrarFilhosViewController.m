@@ -38,10 +38,9 @@
 
 - (IBAction)confirmar:(id)sender
 {
-    Filho *novoFilho = [[Filho alloc] init];
-    novoFilho.nome = self.novoFilhoTextField.text;
-    novoFilho.foto = [_imagemFilho image];
-    NSLog(@"%@", novoFilho.nome);
+
+    NSString* novoFilho = self.novoFilhoTextField.text;
+    NSLog(@"%@", novoFilho);
     FilhosSingleton *fs = [FilhosSingleton sharedInstance];
     [fs.filhos addObject:novoFilho];
     
@@ -49,7 +48,7 @@
     
     
     PFQuery *query = [PFQuery queryWithClassName:@"Filho"];
-    [query whereKey:@"Coluna_Filho" equalTo:novoFilho.nome];
+    [query whereKey:@"Coluna_Filho" equalTo:novoFilho];
     ///Retrieve the object by id
     [query findObjects];
     
@@ -64,7 +63,7 @@
             PFObject *testObject = [PFObject objectWithClassName:@"Filho"];
             testObject[@"Coluna_FilhoLatitude"] = @"00000";
             testObject[@"Coluna_FilhoLongitude"] = @"00000";
-            testObject[@"Coluna_Filho"] = (@"%@",novoFilho.nome);
+            testObject[@"Coluna_Filho"] = (@"%@",novoFilho);
             testObject[@"Coluna_Pai"] = (@"%@",_paiParse);
             [testObject saveInBackground];
             
