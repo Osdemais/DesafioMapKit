@@ -14,7 +14,7 @@
 {
 
     [super viewDidLoad];
-    
+    pinoFilho= [[MKPointAnnotation alloc] init];
     
     
     
@@ -45,11 +45,11 @@
                 _longitude = [y doubleValue];
                 
                 CLLocationCoordinate2D coordenadasFilho = CLLocationCoordinate2DMake(_latitude ,_longitude);
-                MKCoordinateSpan zoom = MKCoordinateSpanMake(0.07, 0.07);
+                MKCoordinateSpan zoom = MKCoordinateSpanMake(0.01, 0.01);
                 MKCoordinateRegion regiao = MKCoordinateRegionMake(coordenadasFilho, zoom);
                 [self.mapa setRegion:regiao];
                
-                MKPointAnnotation* pinoFilho= [[MKPointAnnotation alloc] init];
+
                 
                 pinoFilho.coordinate = coordenadasFilho;
 
@@ -225,10 +225,11 @@
    
     
     CLLocationCoordinate2D coordenadasFilho = CLLocationCoordinate2DMake(_latitude ,_longitude);
-    MKCoordinateSpan zoom = MKCoordinateSpanMake(0.07, 0.01);
+    MKCoordinateSpan zoom = MKCoordinateSpanMake(0.01, 0.01);
     
-    MKPointAnnotation* pinoFilho= [[MKPointAnnotation alloc] init];
+
     pinoFilho.coordinate = coordenadasFilho;
+    [self.mapa removeAnnotation:pinoFilho];
     [self.mapa addAnnotation:pinoFilho];
     
     

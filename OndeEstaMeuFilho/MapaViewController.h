@@ -10,7 +10,9 @@
 #import <CoreLocation/CoreLocation.h>
 #import <Parse/Parse.h>
 
-@interface MapaViewController : UIViewController <CLLocationManagerDelegate>
+@interface MapaViewController : UIViewController <CLLocationManagerDelegate>{
+    MKPointAnnotation* pinoFilho;
+}
 
 // Gerenciador do GPS
 @property (strong, nonatomic) CLLocationManager* gerenciadorGPS;
