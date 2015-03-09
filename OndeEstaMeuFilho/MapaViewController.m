@@ -129,6 +129,12 @@
 //-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
 //    [self.gerenciadorGPS stopUpdatingLocation];
 //}
+
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

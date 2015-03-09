@@ -22,7 +22,51 @@ CLLocationManager *locationManager;
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     [locationManager startUpdatingLocation];
+    
+    [self dispatch];
     // Do any additional setup after loading the view.
+}
+
+-(void) dispatch {
+    
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [self changeBgColor];
+    });
+    
+}
+
+-(void) changeBgColor {
+    
+    switch (self.flagColor) {
+        case 0:
+            self.view.backgroundColor = [UIColor redColor]; self.flagColor++;
+            break;
+            
+        case 1:
+            self.view.backgroundColor = [UIColor blueColor];self.flagColor++;
+            break;
+            
+        case 2:
+            self.view.backgroundColor = [UIColor greenColor];self.flagColor++;
+            break;
+            
+        case 3:
+            self.view.backgroundColor = [UIColor purpleColor];self.flagColor++;
+            break;
+            
+        case 4: {
+            self.view.backgroundColor = [UIColor yellowColor];
+            self.flagColor = 0;
+        }
+            break;
+            
+        default:
+            break;
+    }
+    
+    
+    [self dispatch];
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -38,11 +38,17 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 //_labelPai.text = _pai;
 }
+
 //-(void) viewDidAppear:(BOOL)animated
 //{
 //   // _labelPai.text = _pai;
 //    [self.tableView reloadData];
 //}
+
+-(BOOL)shouldAutorotate
+{
+    return NO;
+}
 
 - (void)didReceiveMemoryWarning
 {

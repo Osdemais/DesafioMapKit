@@ -13,7 +13,7 @@
 @interface AcessoFilhoViewController : UIViewController <CLLocationManagerDelegate>
 
 @property NSString* nome;
-- (IBAction)getCurrentLocation:(id)sender;
+@property int flagColor;
 
 
 @end
